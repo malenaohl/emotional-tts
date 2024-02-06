@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion-based Text Editor</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="emoji-slider-container" style="display: none;">
+        <div id="emoji-selector">
+            <button class="emoji-btn" data-emotion="angry">😠</button>
+            <button class="emoji-btn" data-emotion="happy">😊</button>
+            <button class="emoji-btn" data-emotion="sad">😢</button>
+            <button class="emoji-btn" data-emotion="surprised">😮</button>
+            <button class="emoji-btn" data-emotion="neutral">😐</button>
+        </div>
+        <div id="slider-container" style="display: none;">
+            <div id="slider-labels">
+                <span id="less-label"></span>
+                <span id="more-label" style="float: right;"></span>
+            </div>
+            <input type="range" id="emotion-slider" min="1" max="10">
+        </div>
+      <button id="generate-line-btn" style="display: none;">Generate line</button>
+       <div id="loading-container" style="display: none;">
+        <div id="loading-spinner" style="display: none;">
+          <div class="spinner"></div>
+          <p>Generating line...</p>
+          <p id="percentage-counter">0%</p>
+        </div>
+       </div>
+      <div id="audio-feedback-container" style="display: none;">
+      <audio id="audio-player" controls style="display: none;">
+          <source src="https://cantabile-kwok.github.io/EmoDiff-intensity-ctrl/audio/intensity/Angry/1.0/%5Bspk_4%5D-%5Bemo_0%5D0011-Angry_000396.wav" type="audio/wav">
+          Your browser does not support the audio element.
+      </audio>
+      <div id="feedback-section" style="display: none;">
+          <div id="feedback-text">
+              Help us improve: How was this audio?
+          </div>
+          <div id="feedback-buttons">
+              <button id="thumbs-up-btn">👍</button>
+              <button id="thumbs-down-btn">👎</button>
+          </div>
+      </div>
+      <div id="thank-you-message" style="display: none;">
+          Thanks for your feedback!
+      </div>
+      <div id="button-container" style="display: none;">
+       <button id="download-btn" style="display: none;">Download</button>
+      <button id="try-again-btn" style="display: none;">Try again</button>
+      </div>
+      </div>
+      </div>
+    </div>
+    <div id="editor" contenteditable="true">
+      <p><span class="bear">Bear :)</span> = Who are you?!</p>
+      <p><span class="bear">Bear &gt;:(</span> = Do you have a problem?!</p>
+      <p><span class="bear">Bear &gt;:(</span> = If you have one, just call our damn hotline!</p>
+      <p><span class="duck">Duck :)</span> = I'm Eugene McQuacklin, the Duck Detective.</p>
+      <p><span class="duck">Duck :)</span> = A client hired me to investigate a case.</p>
+      <p><span class="bear">Bear &gt;:(</span> = ..... </p>
+      <p><span class="bear">Bear :D</span> = Why didn't you just say so?</p>
+      <p><span class="bear">Bear :)</span> = It's time we put an end to the awful lunch theft.</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
