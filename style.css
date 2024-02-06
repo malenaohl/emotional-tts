@@ -1,0 +1,285 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {background-color: black;}
+
+button, #slider-labels {
+    font-family: 'Inter', sans-serif;
+    color:#ffffff
+}
+
+#editor {
+    border-radius: 4px;
+    padding: 20px;
+    min-height: 300px;
+    border: 1px solid #1c1c1c;
+    margin-top: 10px;
+    background: rgb(29, 30, 35);
+    color: rgb(255, 255, 255);
+    gap: 8px;
+  font-family: 'Inter', sans-serif;
+  line-height: 155%;
+}
+
+#emoji-slider-container {
+   box-sizing: border-box;
+    position: absolute;
+    background: rgb(40, 43, 47);
+    padding: 18px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    z-index: 1000;
+    min-width: 290px;
+    width: auto;/* Adjusted to auto to accommodate the content */
+}
+
+#emoji-selector {
+    display: flex;
+    margin-bottom: 0px;
+  justify-content: space-between; /* Distributes space evenly between items */
+  align-items: center; /* Align items vertically in the center */
+  width: 100%; /* Full width of its container */
+}
+
+.emoji-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#slider-container {
+    display: none; /* Initially hidden */
+    width: 100%; /* Make slider container full width of emoji-selector */
+}
+
+#slider-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    margin-bottom: 5px;
+}
+
+#emotion-slider {
+    width: 100%; /* Slider takes full width of its container */
+    background: rgb(29, 30, 35);
+    overflow: hidden;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+#button-container {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  width: 100%;
+  gap: 18px; /* Space between the buttons */
+  margin-top: 20px;
+}
+
+#generate-line-btn, #download-btn {
+    flex-grow: 1;
+    flex-basis: 0px;
+    height: 40px;
+    white-space: nowrap;
+    transition: none 0s ease 0s;
+    max-width: 100%;
+    min-width: 110px;
+    width: auto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    border-radius: 4px;
+    padding: 4px 16px;
+    min-height: 32px;
+    border: 0px;
+    place-items: center;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    background: rgb(105, 4, 233);
+    color: rgb(255, 255, 255);
+}
+
+#try-again-btn {
+  flex-grow: 1;
+  flex-basis: 0px;
+  height: 40px;
+  white-space: nowrap;
+  transition: none 0s ease 0s;
+  max-width: 100%;
+  min-width: 110px;
+  width: auto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  border-radius: 4px;
+  padding: 4px 16px;
+  min-height: 32px;
+  border: 0px;
+  place-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  background: rgb(29, 30, 35);
+  color: rgb(255, 255, 255);
+}
+
+#loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+#loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center-align text */
+    font-family: 'Inter', sans-serif;
+}
+
+
+.spinner {
+    border: 4px solid #f3f3f3; /* Light grey for spinner background */
+    border-top: 4px solid rgb(105, 4, 233); /* Spinner color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto; /* Center the spinner horizontally */
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#loading-text, #percentage-counter {
+    color: white; /* White color for text */
+    margin-top: 10px; /* Spacing between spinner and text */
+}
+
+/* Define CSS variables for easy customization */
+:root {
+    --thumb-color: #ffffff;
+    --range-color-idle: #414550;
+    --thumb-box-shadow: 0px 0px 0px 0.5px rgba(255, 255, 255, 0.1);
+    --hover-range-background: #414550;
+    --thumb-height: 31px;
+}
+
+/* General styling for the slider */
+input[type='range'] {
+    -webkit-appearance: none;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 32px;
+    border-radius: 4px;
+    background: rgb(29, 30, 35);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Styling for the slider thumb */
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: var(--thumb-height);
+    width: var(--thumb-height); /* Assuming square thumb */
+    border-radius: 50%;
+    background: var(--thumb-color);
+    box-shadow: var(--thumb-box-shadow);
+    margin-top: 0.5px; /* Adjust according to the height for proper alignment */
+}
+
+input[type='range']::-moz-range-thumb {
+    height: var(--thumb-height);
+    width: var(--thumb-height); /* Assuming square thumb */
+    border-radius: 50%;
+    background: var(--thumb-color);
+    box-shadow: var(--thumb-box-shadow);
+}
+
+/* Styling for the slider track */
+input[type='range']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: var(--range-color-idle);
+}
+
+input[type='range']::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: var(--range-color-idle);
+}
+
+/* Hover effect for the range */
+input[type='range']:hover {
+    background: var(--hover-range-background);
+}
+#feedback-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 16px;
+}
+
+#audio-player {
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0.85;
+}
+
+#feedback-text {
+  font-family: 'Inter', sans-serif;
+  color:#bababa;
+  font-size: 11pt;
+  margin-right: 8px;
+}
+
+#thumbs-up-btn, #thumbs-down-btn {
+   background-color: transparent;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: none;
+      outline: none;
+      font-size:14pt;
+  }
+
+#feedback-buttons {
+    display: flex;
+    gap: 2px; /* Adjust as needed */
+}
+
+#thank-you-message {
+    width: 100%;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    color:#ffffff;
+    margin-top: 16px;
+}
+
+.play-button {
+  background-color: #505050; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  font-size:14pt;
+  margin-left: 3px;
+}
